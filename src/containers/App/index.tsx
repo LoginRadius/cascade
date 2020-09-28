@@ -23,7 +23,7 @@ class App extends React.Component<AppProps, AppState> {
             { name: "Open Source", link: "/opensource" }
           ]}
         />
-        <Routes />Î
+        <Routes />
       </React.Fragment>
     );
   }
