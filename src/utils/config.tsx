@@ -1,4 +1,4 @@
-const APP_URL = "https://dev-home.devhub.lrinternal.com";
+const APP_URL = "https://cya4vd.hub.loginradius.com/auth.aspx";
 
 export default {
   APP_URL,
