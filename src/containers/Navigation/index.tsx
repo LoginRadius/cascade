@@ -2,6 +2,7 @@ import * as React from "react";
 import { RouteComponentProps } from "react-router";
 import { Link, NavLink, withRouter } from "react-router-dom";
 import "./Navigation.scss";
+import {Nav, Navbar, NavItem} from "reactstrap";
 
 export interface NavigationProps extends RouteComponentProps {
   title: string;
@@ -15,22 +16,17 @@ export interface NavigationState {}
 class Navigation extends React.Component<NavigationProps, NavigationState> {
   render() {
     return (
-      <div>
-        <div className="header-dark">
-          <nav className="navbar navbar-dark navbar-expand-md navigation-clean-search">
-            <div className="container">
+      <Navbar dark expand="lg" color="secondary">
+        <div className="container">
               <Link className="navbar-brand" to="/">
                 {this.props.title}
               </Link>
-              <button
-                className="navbar-toggler"
-                data-toggle="collapse"
-                data-target="#navcol-1"
-              >
-                <span className="sr-only">Toggle navigation</span>
-                <span className="navbar-toggler-icon"></span>
-              </button>
-              <div className="collapse navbar-collapse" id="navcol-1">
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar"
+                  aria-controls="Navbar"
+                  aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+              <div className="collapse navbar-collapse" id="Navbar">
                 <ul className="nav navbar-nav">
                   {this.props.sections.map((section, index) => {
                     return (
@@ -39,6 +35,8 @@ class Navigation extends React.Component<NavigationProps, NavigationState> {
                         className="nav-item"
                         role="presentation"
                       >
+                        <Nav pills>
+                        <NavItem className={"btn btn-block"}>
                         <NavLink
                           className={
                             "nav-link" +
@@ -50,21 +48,24 @@ class Navigation extends React.Component<NavigationProps, NavigationState> {
                         >
                           {section.name}
                         </NavLink>
+                        </NavItem>
+                        </Nav>
                       </li>
                     );
                   })}
+                  <NavItem className={"btn text-center btn-block-sm"}>
+                    <Link
+                        className={"nav-link"}
+                        to="/logout"
+                    >
+                      {"Logout"}
+                    </Link>
+                  </NavItem>
                 </ul>
+
               </div>
-              <Link
-                className={"nav-link ml-auto text-white"}
-                to="/logout"
-              >
-                {"Logout"}
-              </Link>
-            </div>
-          </nav>
         </div>
-      </div>
+      </Navbar>
     );
   }
 }
