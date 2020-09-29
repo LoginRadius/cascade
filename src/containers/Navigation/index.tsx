@@ -64,6 +64,16 @@ class Navigation extends React.Component<NavigationProps, NavigationState> {
                 </ul>
 
               </div>
+<<<<<<< HEAD
+=======
+              {config.ENABLE_LOGIN && (
+                <Link className={"nav-link ml-auto text-white"} to="/logout">
+                  {"Logout"}
+                </Link>
+              )}
+            </div>
+          </nav>
+>>>>>>> Added config flag to enable and disbale the login
         </div>
       </Navbar>
     );
