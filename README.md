@@ -10,19 +10,19 @@
 
 ## Introduction
 
-As a part of Hackathon Project we have created this repo that contains a list of all our great minds who are working with passion and dedication in the organization. 
+As a part of our Hackathon Project, we created this repo containing a curated list of all the great minds working with utter passion and dedication in the organization. 
 
-You can find what's going on in the company like 
+You can find what's going on in the company including, but not limited to: 
 * Events
 * Talks 
-* Hackathon
-* Open-source contribution.
+* Hackathons
+* Open-source contributions and License Free Projects.
 
 ## Features
 
-* Application is built using React.
-* Provide Login Functionality out of the box, you can create your app using [LoginRadius](https://accounts.loginradius.com/auth.aspx?action=register&return_url=https://dashboard.loginradius.com/login). Replace the APP_URL with yours in `src\utils\config.tsx`.
-* Reading data from the JSON Array and creating a UI based on that.
+* This application has been built using React.
+* Provide Login Functionality - out of the box, you can create your app using [LoginRadius](https://accounts.loginradius.com/auth.aspx?action=register&return_url=https://dashboard.loginradius.com/login). Replace the APP_URL with yours in `src\utils\config.tsx`.
+* Reading the data from a JSON Array and creating a UI based on that.
 
 
 ## Feedback
