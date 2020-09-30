@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>GitHub Profile</title>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght0@400;700&display=swap" rel="stylesheet"/>
+        <style>.izzuhead {font-family: "Inter", sans-serif !important;}</style>
+    </head>
+    <body onload="makeplec('mohammed786');">
+        <div class="ui attached stackable menu izzuhead inverted teal">
+            <div class="ui container">
+                <a class="item" style="font-weight: bold;">GitHub Profile Viewer</a>
+                <a class="item">Viewing&nbsp;<span id="profname">#PROFNAME</span>'s&nbsp;profile</a>
+            </div>
+        </div>
+        <div class="ui container">
+            <h2 class="ui header" style="padding-top: 10px;">
+                <img src="https://github.com" id="imaglink">
+                <div class="content izzuhead"><span id="profnam2">Not available</span>
+                    <div class="sub header izzuhead"><span id="fullname">Not available</span>&nbsp;<a href="https://github.com" target="_blank" id="proflink"><i class="share icon"></i></a></div>
+                </div>
+            </h2>
+            <hr/>
+            <div class="ui relaxed divided list">
+                <div class="item"><i class="large address card middle aligned icon"></i><div class="content"><div class="header izzuhead" id="useriden">Not available</div><div class="description izzuhead">Identity</div></div></div>
+                <div class="item"><i class="large building middle aligned icon"></i><div class="content"><div class="header izzuhead" id="compname">Not available</div><div class="description izzuhead">Company</div></div></div>
+                <div class="item"><i class="large compass middle aligned icon"></i><div class="content"><div class="header izzuhead" id="bloglink">Not available</div><div class="description izzuhead">Portfolio</div></div></div>
+                <div class="item"><i class="large search middle aligned icon"></i><div class="content"><div class="header izzuhead" id="location">Not available</div><div class="description izzuhead">Location</div></div></div>
+                <div class="item"><i class="large clone outline middle aligned icon"></i><div class="content"><div class="header izzuhead" id="publrepo">Not available</div><div class="description izzuhead">Public repositories</div></div></div>
+                <div class="item"><i class="large bell middle aligned icon"></i><div class="content"><div class="header izzuhead" id="follhere">Not available</div><div class="description izzuhead">Followers</div></div></div>
+                <div class="item"><i class="large microphone middle aligned icon"></i><div class="content"><div class="header izzuhead" id="follther">Not available</div><div class="description izzuhead">Following</div></div></div>
+                <div class="item"><i class="large fingerprint middle aligned icon"></i><div class="content"><div class="header izzuhead" id="modedate">Not available</div><div class="description izzuhead">Last modified on</div></div></div>
+                <div class="item"><i class="large plus circle middle aligned icon"></i><div class="content"><div class="header izzuhead" id="makedate">Not available</div><div class="description izzuhead">Account created on</div></div></div>
+            </div>
+        </div>
+    </body>
+    <script>
+        function makeplec(profname)
+        {
+            document.getElementById("profname").innerText = profname;
+            document.getElementById("profnam2").innerText = profname;
+            fetch("https://api.github.com/users/" + profname)
+                .then((res) => res.json())
+                .then((temp) => {
+                    console.log(temp);
+                    if (temp["id"].toString().trim() != "") document.getElementById("useriden").innerText = temp["id"].toString().trim();
+                    if (temp["name"].toString().trim() != "") document.getElementById("fullname").innerText = temp["name"].toString().trim();
+                    if (temp["company"].toString().trim() != "") document.getElementById("compname").innerText = temp["company"].toString().trim();
+                    if (temp["blog"].toString().trim() != "") document.getElementById("bloglink").innerText = temp["blog"].toString().trim();
+                    if (temp["location"].toString().trim() != "") document.getElementById("location").innerText = temp["location"].toString().trim();
+                    if (temp["public_repos"].toString().trim() != "") document.getElementById("publrepo").innerText = "User owns " + temp["public_repos"].toString().trim() + " public repositories";
+                    if (temp["followers"].toString().trim() != "") document.getElementById("follhere").innerText = "User has " + temp["followers"].toString().trim() + " follower(s)";
+                    if (temp["following"].toString().trim() != "") document.getElementById("follther").innerText = "User follows " + temp["following"].toString().trim() + " account(s)";
+                    if (temp["updated_at"].toString().trim() != "") document.getElementById("modedate").innerText = temp["updated_at"].toString().trim();
+                    if (temp["created_at"].toString().trim() != "") document.getElementById("makedate").innerText = temp["created_at"].toString().trim();
+                    if (temp["avatar_url"].toString().trim() != "") document.getElementById("imaglink").src = temp["avatar_url"].toString().trim();
+                    if (temp["html_url"].toString().trim() != "") document.getElementById("proflink").href = temp["html_url"].toString().trim();
+                })
+            .catch((err) => console.error(err));
+        }
+    </script>
+</html>
