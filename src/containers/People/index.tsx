@@ -91,6 +91,12 @@ class People extends React.Component<PeopleProps, PeopleState> {
     );
   };
 
+  // Sets alternate image from ui-avatars.com if original URL doesn't work
+  setAlternate(e: React.SyntheticEvent, name: any){
+    let imageTag = e.currentTarget.childNodes[0] as HTMLImageElement;
+    imageTag.setAttribute("src", `https://ui-avatars.com/api/?name=${name}&size=460`);
+  };
+  
   render() {
     const peopleCat = this._getPeopleCategory(people);
     const { selectedProfile } = this.state;
@@ -146,6 +152,7 @@ class People extends React.Component<PeopleProps, PeopleState> {
                   selectedProfile?.Thumbnail ||
                   `https://ui-avatars.com/api/?name=${selectedProfile?.Name}&size=460`
                 }
+                onError={(event:React.SyntheticEvent)=>this.setAlternate(event,selectedProfile?.Name)}
               />
               <Modal.Description>
                 <Header>{selectedProfile?.Name}</Header>

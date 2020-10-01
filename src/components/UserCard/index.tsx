@@ -9,6 +9,12 @@ export interface UserCardProps extends PeopleSchema {
 const UserCard: React.FC<UserCardProps> = ({ onClick, ...props }) => {
   // const social = getSocialInfo(props);
 
+  // Sets alternate image from ui-avatars.com if original URL doesn't work
+  function setAlternate(e: React.SyntheticEvent, name: any){
+    let imageTag = e.currentTarget as HTMLImageElement;
+    imageTag.setAttribute("src", `https://ui-avatars.com/api/?name=${name}&size=460`);
+  };
+
   return (
     <Popup
       content={getTooltipContent(props)}
@@ -25,6 +31,7 @@ const UserCard: React.FC<UserCardProps> = ({ onClick, ...props }) => {
           onClick={() => onClick && onClick(props)}
           className="m-2"
           style={{ cursor: "pointer" }}
+          onError={(event:React.SyntheticEvent)=>setAlternate(event, props.Name)}
         />
       }
     />
