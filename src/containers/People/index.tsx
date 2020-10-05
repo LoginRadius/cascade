@@ -4,6 +4,7 @@ import UserCard from "../../components/UserCard/index";
 import { people, PeopleSchema } from "../../constants/peopleData";
 import { Modal, Image, Header, Popup } from "semantic-ui-react";
 import qs from "qs";
+import "./Team.scss";
 
 interface PeopleProps extends RouteComponentProps {}
 interface PeopleState {
@@ -19,17 +20,17 @@ class People extends React.Component<PeopleProps, PeopleState> {
     let profile: PeopleState["selectedProfile"];
 
     if (query.sel) {
-      profile = people.find(peep => peep.Email === query.sel);
+      profile = people.find((peep) => peep.Email === query.sel);
     }
 
     this.state = {
-      selectedProfile: profile
+      selectedProfile: profile,
     };
   }
 
   private _getPeopleCategory = (people: PeopleSchema[]) => {
     const cat: Map<string, PeopleSchema[]> = new Map();
-    people.forEach(peep => {
+    people.forEach((peep) => {
       const catName = /(?:Engineer|Developer)/g.test(peep.Category)
         ? "Engineering"
         : /(?:Director|Analyst)/g.test(peep.Category)
@@ -59,14 +60,14 @@ class People extends React.Component<PeopleProps, PeopleState> {
       social.push({
         name: "website",
         url: profile.PersonalWebsite,
-        icon: "portrait"
+        icon: "portrait",
       });
     }
     if (profile.StackOverFlow) {
       social.push({
         name: "stack-overflow",
         url: profile.StackOverFlow,
-        icon: "stack-overflow"
+        icon: "stack-overflow",
       });
     }
     return social;
@@ -79,14 +80,14 @@ class People extends React.Component<PeopleProps, PeopleState> {
     const newQuery = { ...(current || {}), ...(add || {}) };
 
     if (remove) {
-      remove.forEach(param => {
+      remove.forEach((param) => {
         delete newQuery[param];
       });
     }
 
     history.push(
       `${location.pathname}/?${Object.keys(newQuery).map(
-        q => q + "=" + newQuery[q]
+        (q) => q + "=" + newQuery[q]
       )}`
     );
   };
@@ -115,14 +116,14 @@ class People extends React.Component<PeopleProps, PeopleState> {
           {Array.from(peopleCat.keys()).map((category, catIndex) => {
             return (
               <div className="teams mt-5" key={catIndex}>
-                <h1 className="text-left">{category}</h1>
-                <div className="row">
+                <h1 className="text-center">{category}</h1>
+                <div className=" text-center">
                   {(peopleCat.get(category) || []).map((peep, index) => {
                     return (
                       <UserCard
                         key={index}
                         {...peep}
-                        onClick={profile => {
+                        onClick={(profile) => {
                           this.setState({ selectedProfile: profile });
                           this._updateURLQuery({ sel: profile.Email });
                         }}
@@ -209,3 +210,4 @@ class People extends React.Component<PeopleProps, PeopleState> {
 }
 
 export default withRouter(People);
+
