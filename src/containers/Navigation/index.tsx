@@ -4,6 +4,8 @@ import { Link, NavLink, withRouter } from "react-router-dom";
 import "./Navigation.scss";
 import {Nav, Navbar, NavItem} from "reactstrap";
 
+import config from "../../utils/config";
+
 export interface NavigationProps extends RouteComponentProps {
   title: string;
   sections: {
@@ -62,7 +64,6 @@ class Navigation extends React.Component<NavigationProps, NavigationState> {
                     </Link>
                   </NavItem>
                 </ul>
-
               </div>
 
 
