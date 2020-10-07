@@ -104,19 +104,21 @@ class People extends React.Component<PeopleProps, PeopleState> {
 
     return (
       <div className="team-boxed">
-        <div className="container">
+        <div className="container text-center">
+          <div className="row">
           <div className="intro">
-            <h2 className="text-center">People </h2>
-            <p className="text-center">
-              This is our team, who help you bring a delighful user experience!
+            <h2>People </h2>
+            <p>
+              This is our team, who help you bring a delightful user experience!
             </p>
           </div>
 
+            <div className="row text-center">
+              <div className="col-12 col-sm-12">
           {Array.from(peopleCat.keys()).map((category, catIndex) => {
             return (
               <div className="teams mt-5" key={catIndex}>
-                <h1 className="text-left">{category}</h1>
-                <div className="row">
+                    <h1>{category}</h1>
                   {(peopleCat.get(category) || []).map((peep, index) => {
                     return (
                       <UserCard
@@ -130,9 +132,10 @@ class People extends React.Component<PeopleProps, PeopleState> {
                     );
                   })}
                 </div>
-              </div>
             );
           })}
+             </div>
+            </div>
 
           <Modal
             open={selectedProfile !== undefined}
@@ -202,6 +205,7 @@ class People extends React.Component<PeopleProps, PeopleState> {
               </Modal.Description>
             </Modal.Content>
           </Modal>
+        </div>
         </div>
       </div>
     );
