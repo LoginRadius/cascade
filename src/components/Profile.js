@@ -95,7 +95,15 @@ function Profile() {
               <div className="description izzuhead">Following</div>
             </div>
           </div>
-
+          <div className="item">
+            <i className="large calendar outline middle aligned icon" />
+            <div className="content">
+              <div className="header izzuhead" id="modedate">
+                {person.updated_at}
+              </div>
+              <div className="description izzuhead">Last modified on</div>
+            </div>
+          </div>
           <div className="item">
             <i className="large plus circle middle aligned icon"></i>
             <div className="content">
