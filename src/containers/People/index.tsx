@@ -1,5 +1,10 @@
 import React from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css'
+import "./index.css";
+import App from "./containers/App";
+import * as serviceWorker from "./serviceWorker";
+import { BrowserRouter } from "react-router-dom";
 import UserCard from "../../components/UserCard/index";
 import { people, PeopleSchema } from "../../constants/peopleData";
 import { Modal, Image, Header, Popup } from "semantic-ui-react";
@@ -47,13 +52,13 @@ class People extends React.Component<PeopleProps, PeopleState> {
 
     const social = [];
     if (profile.GithubURL) {
-      social.push({ name: "github", url: profile.GithubURL, icon: "github" });
+      social.push({ name: "Github", url: profile.GithubURL, icon: "github" });
     }
     if (profile.Medium) {
-      social.push({ name: "medium", url: profile.Medium, icon: "medium" });
+      social.push({ name: "Medium", url: profile.Medium, icon: "medium" });
     }
     if (profile.PersonalBlogURL) {
-      social.push({ name: "blog", url: profile.PersonalBlogURL, icon: "user" });
+      social.push({ name: "Blog", url: profile.PersonalBlogURL, icon: "user" });
     }
     if (profile.PersonalWebsite) {
       social.push({
@@ -104,16 +109,16 @@ class People extends React.Component<PeopleProps, PeopleState> {
 
     return (
       <div className="team-boxed">
-        <div className="container text-center">
+        <div className="container text-center bucket-d2">
           <div className="row">
-          <div className="intro">
-            <h2>People </h2>
-            <p>
-              This is our team, who help you bring a delightful user experience!
+          <div className="intro intro-v1">
+            <h2 className="clo-969">Our Peoples </h2>
+            <p className="align-ca1">
+              This is our team, We are here to help you bring a delightful & smooth user experience!
             </p>
           </div>
 
-            <div className="row text-center">
+            <div className="row text-center col-169">
               <div className="col-12 col-sm-12">
           {Array.from(peopleCat.keys()).map((category, catIndex) => {
             return (
@@ -125,8 +130,12 @@ class People extends React.Component<PeopleProps, PeopleState> {
                         key={index}
                         {...peep}
                         onClick={profile => {
-                          this.setState({ selectedProfile: profile });
-                          this._updateURLQuery({ sel: profile.Email });
+                          try:
+                              this.setState({ selectedProfile: profile });
+                              this._updateURLQuery({ sel: profile.Email });
+                          except:
+                              render()
+                              
                         }}
                       />
                     );
