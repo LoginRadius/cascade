@@ -4,6 +4,7 @@ import UserCard from "../../components/UserCard/index";
 import { people, PeopleSchema } from "../../constants/peopleData";
 import { Modal, Image, Header, Popup } from "semantic-ui-react";
 import qs from "qs";
+import HeatMap from "../../components/HeatMap";
 
 interface PeopleProps extends RouteComponentProps {}
 interface PeopleState {
@@ -136,7 +137,7 @@ class People extends React.Component<PeopleProps, PeopleState> {
             }}
             size="small"
             centered
-            style={{ height: "max-content", margin: "25% auto" }}
+            style={{ height: "max-content", margin: "15% auto" }}
           >
             <Modal.Content image>
               <Image
@@ -146,6 +147,7 @@ class People extends React.Component<PeopleProps, PeopleState> {
                   selectedProfile?.Thumbnail ||
                   `https://ui-avatars.com/api/?name=${selectedProfile?.Name}&size=460`
                 }
+                className='circular'
               />
               <Modal.Description>
                 <Header>{selectedProfile?.Name}</Header>
@@ -192,6 +194,11 @@ class People extends React.Component<PeopleProps, PeopleState> {
                     })}
                   </div>
                 ) : null}
+
+                <HeatMap 
+                  githubUrl={!!socialInfo[0] ? (socialInfo[0].name === 'github' ? socialInfo[0].url : '') : ''}
+                />
+                {/* <p>HEALMAP</p> */}
               </Modal.Description>
             </Modal.Content>
           </Modal>
