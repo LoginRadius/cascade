@@ -10,7 +10,6 @@ interface AppState {}
 
 class App extends React.Component<AppProps, AppState> {
   render() {
-
     return (
       <React.Fragment>
         <Navigation
@@ -20,7 +19,8 @@ class App extends React.Component<AppProps, AppState> {
             { name: "Event", link: "/event" },
             { name: "Talk", link: "/talk" },
             { name: "Hackathon", link: "/hackathon" },
-            { name: "Open Source", link: "/opensource" }
+            { name: "Open Source", link: "/opensource" },
+            { name: "Profile", link: "/profile" },
           ]}
         />
         <Routes />

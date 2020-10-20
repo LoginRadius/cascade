@@ -3,6 +3,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import Login from "../containers/Login";
 import Logout from "../containers/Logout";
+import Profile from "../components/Profile";
 
 const Event = React.lazy(() => import("../containers/Event"));
 const Hackathon = React.lazy(() => import("../containers/Hackathon"));
@@ -54,6 +55,11 @@ class Routes extends React.Component<RoutesProps, RoutesState> {
         <PrivateRoute exact path="/opensource">
           <React.Suspense fallback={fallback}>
             <OpenSource />
+          </React.Suspense>
+        </PrivateRoute>
+        <PrivateRoute exact path="/profile">
+          <React.Suspense fallback={fallback}>
+            <Profile />
           </React.Suspense>
         </PrivateRoute>
 
