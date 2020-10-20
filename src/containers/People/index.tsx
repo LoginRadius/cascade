@@ -130,11 +130,10 @@ class People extends React.Component<PeopleProps, PeopleState> {
                         key={index}
                         {...peep}
                         onClick={profile => {
-                          try:
-                              this.setState({ selectedProfile: profile });
-                              this._updateURLQuery({ sel: profile.Email });
-                          except:
-                              render()
+                          
+                          this.setState({ selectedProfile: profile });
+                          this._updateURLQuery({ sel: profile.Email });
+                         
                               
                         }}
                       />
