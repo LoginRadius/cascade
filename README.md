@@ -1,4 +1,4 @@
-<h1 align="center"> LoginRadius Developer Portal </h1> <br>
+<h1 align="center"> <a href="https://www.loginradius.com/">/a>LoginRadius Developer Portal </h1> <br>
 
 <p align="center">
    <img alt="LoginRadius" title="LoginRadius" src="https://i.imgur.com/Zv6PKs6.png" width="450">
